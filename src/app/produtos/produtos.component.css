@@ -1,0 +1,9 @@
+.inner{
+  width: 100%;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.inner div {
+  width: 48%;
+}

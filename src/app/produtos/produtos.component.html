@@ -2,30 +2,53 @@
   <div class="row">
     <div class="col-7 m-auto">
       <h1 class="text-center">Cadastro de Produtos</h1>
-      <form>
-        <div class="mb-3">
-          <label for="matricula" class="form-label">Produto:</label>
-          <input type="text" class="form-control" id="matricula" formControlName="id" />
+      <form class="d-flex flex-column" [formGroup]="catchFormGroup">
+        <div class="d-flex inner">
+          <div class="mb-3">
+            <label for="id" class="form-label">Id:</label>
+            <input type="number" class="form-control" id="id" formControlName="id" />
+          </div>
+          <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Produto:</label>
+            <input type="text" class="form-control" id="nome" formControlName="nome" />
+          </div>
         </div>
         <div class="mb-3">
-          <label for="nome" class="form-label">Nome:</label>
-          <input type="text" class="form-control" id="nome"formControlName="name" />
+          <label for="descricao" class="form-label">Descrição:</label>
+          <input type="text" class="form-control" id="descricao" formControlName="descricao" />
         </div>
-        <div class="mb-3">
-          <label for="curso" class="form-label">Curso:</label>
-          <input type="text" class="form-control" id="curso" formControlName="course" />
+        <div class="d-flex inner mb-3">
+          <div class="mb-3">
+            <label for="preco" class="form-label">Preço:</label>
+            <input type="number" class="form-control" id="preco" formControlName="preco" />
+          </div>
+          <div class="mb-3">
+            <label for="quantidade" class="form-label">Quantidade:</label>
+            <input type="number" class="form-control" id="quantidade" formControlName="quantidade" />
+          </div>
         </div>
-        <button class="btn btn-primary">Salvar</button>
+        <button class="btn btn-primary" (click)="salvar()" type="submit">Salvar</button>
       </form>
-      <h1 class="text-center">Alunos Cadastrados</h1>
+      <h1 class="text-center mt-2 mb-2">Produtos Cadastrados</h1>
       <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Matricula</th>
-            <th scope="col">Nome</th>
-            <th scope="col">Curso</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nome Produto</th>
+            <th scope="col">Descrição</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Quantidade</th>
           </tr>
         </thead>
+        <tbody>
+          <tr *ngFor="let produto of produtos">
+            <th scope="row">{{ produto.id }}</th>
+            <td>{{ produto.nome }}</td>
+            <td>{{ produto.descricao }}</td>
+            <td>{{ produto.preco }}</td>
+            <td>{{ produto.quantidade }}</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   </div>
