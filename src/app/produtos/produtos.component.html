@@ -27,7 +27,15 @@
             <input type="number" class="form-control" id="quantidade" formControlName="quantidade" />
           </div>
         </div>
-        <button class="btn btn-primary" (click)="salvar()" type="submit">Salvar</button>
+        <button
+          class="btn btn-dark btn-lg"
+          (click)="salvar()"
+          type="submit"
+          [disabled]="!catchFormGroup.valid"
+          [ngClass]="{'btn-block': '!catchFormGroup.valid'}"
+        >
+          Salvar
+        </button>
       </form>
       <h1 class="text-center mt-2 mb-2">Produtos Cadastrados</h1>
       <table class="table table-striped">
