@@ -55,6 +55,16 @@
             <td>{{ produto.descricao }}</td>
             <td>{{ produto.preco }}</td>
             <td>{{ produto.quantidade }}</td>
+            <td class="text-end">
+              <button class="btn btn-success me-2"
+              (click)="update(produto)">
+                Editar
+              </button>
+              <button class="btn btn-danger"
+              (click)="delete(produto)">
+                Excluir
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>

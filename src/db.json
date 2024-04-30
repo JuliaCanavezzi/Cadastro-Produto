@@ -1,25 +1,18 @@
 {
-  "produtos":
-  [
-    { "id": 1,
-    "nome": "Prego",
-    "descricao":  "Metal",
-    "preco": 10,
-    "quantidade": 120
+  "produtos": [
+    {
+      "id": "1",
+      "nome": "Parafuso",
+      "descricao": "Metal",
+      "preco": 10,
+      "quantidade": 120
     },
-
-    { "id": 2,
-    "nome": "Martelo",
-    "descricao":  "Ferro e Madeira",
-    "preco": 12,
-    "quantidade": 30
-    },
-
-    { "id": 3,
-    "nome": "Porta",
-    "descricao":  "Maçaneta de Alumínio",
-    "preco": 130,
-    "quantidade": 500
+    {
+      "id": "2",
+      "nome": "Pedro",
+      "descricao": "Ferro e Madeira",
+      "preco": 12,
+      "quantidade": 30
     }
   ]
 }

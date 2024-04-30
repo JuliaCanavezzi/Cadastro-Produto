@@ -11,6 +11,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class ProdutosComponent implements OnInit {
   produtos: Produto[] = []
   catchFormGroup: FormGroup;
+  isEdting : boolean = false;
 
   constructor(private formBuilder: FormBuilder, private service: ProdutoService) {
     this.catchFormGroup = formBuilder.group({
@@ -23,13 +24,44 @@ export class ProdutosComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loadProdutos();
+  }
+
+  loadProdutos(){
     this.service.getProdutos().subscribe({
       next: data => this.produtos = data
     });
   }
 
   salvar() {
-    this.produtos.push(this.catchFormGroup.value);
+    if(this.isEdting){
+      this.service.update(this.catchFormGroup.value).subscribe({
+        next: () => {
+          this.loadProdutos()
+          this.isEdting = false;
+          this.catchFormGroup.reset();
+        }
+      })
+    }
+    else{
+      this.service.salvar(this.catchFormGroup.value).subscribe ({
+        next: data => {
+          this.produtos.push(data)
+          this.catchFormGroup.reset();
+         }
+        });
+    }
   }
 
+  delete(produto: Produto){
+    this.service.delete(produto).subscribe
+    ({
+      next: () => this.loadProdutos()
+    });
+  }
+
+  update(produto: Produto){
+    this.isEdting = true;
+    this.catchFormGroup.setValue(produto);
+   }
 }
